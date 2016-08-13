@@ -46,6 +46,9 @@ class TableViewController: UITableViewController {
 		if toDoItemCurrent == nil {
 			toDoItemCurrent = rootItem
 		}
+		
+		//отображение в проваленном списке заголовок категории
+		navigationItem.title = toDoItemCurrent?.name
 	}
 
 	override func didReceiveMemoryWarning() {
