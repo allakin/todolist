@@ -12,6 +12,7 @@ class TableViewController: UITableViewController {
 
 	var toDoItemCurrent: ToDoItem?
 	
+	// MARK: - pushAddAction button
 	@IBAction func pushAddAction(sender: AnyObject) {
 		
 		let alert = UIAlertController(title: "Create new item", message: "", preferredStyle: .Alert)
@@ -40,7 +41,7 @@ class TableViewController: UITableViewController {
 		
 	}
 	
-	
+	// MARK: - viewDidLoad
 	override func viewDidLoad() {
 					super.viewDidLoad()
 		if toDoItemCurrent == nil {
@@ -51,30 +52,32 @@ class TableViewController: UITableViewController {
 		navigationItem.title = toDoItemCurrent?.name
 	}
 	
-
+	// MARK: - didReceiveMemoryWarning
 	override func didReceiveMemoryWarning() {
 					super.didReceiveMemoryWarning()
 					// Dispose of any resources that can be recreated.
 	}
 	
+	// MARK: - viewWillAppear
 	// обновления информации в ячейках
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
 	}
 
-	// MARK: - Table view data source
+	// MARK: - numberOfSectionsInTableView
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 					// #warning Incomplete implementation, return the number of sections
 					return 1
 	}
 
+	// MARK: - numberOfRowsInSection
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 					// #warning Incomplete implementation, return the number of rows
 					return toDoItemCurrent!.subItems.count
 	}
 
-
+ // MARK: - cellForRowAtIndexPath
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 		
@@ -91,14 +94,14 @@ class TableViewController: UITableViewController {
 		return cell
 	}
 	
-
+	// MARK: - canEditRowAtIndexPath
 	// Override to support conditional editing of the table view.
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		// Return false if you do not want the specified item to be editable.
 		return true
 	}
 
-
+	// MARK: - commitEditingStyle
 	// удаление строки из ячейки
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		if editingStyle == .Delete {
@@ -111,7 +114,8 @@ class TableViewController: UITableViewController {
 					// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 		}
 	}
-
+	
+	// MARK: - didSelectRowAtIndexPath
 	//проваливаемся в ячейку для отображения доп инфы
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let subItem = toDoItemCurrent?.subItems[indexPath.row]
