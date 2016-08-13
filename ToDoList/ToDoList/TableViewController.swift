@@ -50,6 +50,54 @@ class TableViewController: UITableViewController {
 		
 		//отображение в проваленном списке заголовок категории
 		navigationItem.title = toDoItemCurrent?.name
+		
+		//метод при долгом нажитии на ячейку чтобы появился алерт
+		let longPressedGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+		tableView.addGestureRecognizer(longPressedGestureRecognizer)
+		//минимальное время через которое сработает действие
+		longPressedGestureRecognizer.minimumPressDuration = 0.5
+	}
+	
+	func handleLongPress(longPress: UILongPressGestureRecognizer) {
+		
+		// координаты точки нажатие во view contoller
+		let pointOfTouch = longPress.locationInView(tableView)
+		
+		//получение indexPath той ячейки которой коснулись
+		let indexPath = tableView.indexPathForRowAtPoint(pointOfTouch)
+		
+		//проверить состояние
+		if longPress.state == .Began {
+			if let indexPath = indexPath {
+				let toDoItem = toDoItemCurrent?.subItems[indexPath.row]
+				
+				let alert = UIAlertController(title: "Edit item", message: "", preferredStyle: .Alert)
+				
+				alert.addTextFieldWithConfigurationHandler { (textField) in
+					textField.placeholder = "ToDo item"
+					textField.text = toDoItem?.name
+				}
+				//по клику добавляем значение в файл
+				let alertActionCreate = UIAlertAction(title: "Update", style: .Default) { (alertAction) in
+					if alert.textFields![0].text! == "" {
+						print("ошибка")
+					} else {
+						toDoItem?.name = alert.textFields![0].text!
+						self.tableView.reloadData()
+						saveData()
+					}
+				}
+				
+				let alertActionCancel = UIAlertAction(title: "Cancel", style: .Cancel) { (UIAlertAction) in
+				}
+				
+				alert.addAction(alertActionCreate)
+				alert.addAction(alertActionCancel)
+				presentViewController(alert, animated: true, completion: nil)
+				
+			}
+		}
+		
 	}
 	
 	// MARK: - didReceiveMemoryWarning
