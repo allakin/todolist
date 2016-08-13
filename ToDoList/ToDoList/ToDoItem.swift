@@ -15,6 +15,29 @@ class ToDoItem: NSObject {
 	
 	var subItems: [ToDoItem]
 	
+	var subItemstext: String {
+		if subItems.count == 0 {
+			return ""
+		}
+		
+		//вычисляем сколько сабайтемов
+		var completedTodoCount: Int = 0
+		for todo in subItems {
+			if todo.isComplete {
+				completedTodoCount += 1
+			}
+		}
+		
+		if completedTodoCount == 0 {
+			return String(subItems.count) + " subitems"
+		} else {
+			return String(subItems.count) + " subitems /" + String(completedTodoCount) + "complete"
+	 }
+		
+
+	}
+	
+	
 	init(name: String) {
 		self.name = name
 		self.isComplete = false

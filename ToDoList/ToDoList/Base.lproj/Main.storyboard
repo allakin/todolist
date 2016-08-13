@@ -88,6 +88,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="selectTodoDefault" width="30" height="30"/>
+        <image name="selectTodoDefault" width="64" height="64"/>
     </resources>
 </document>

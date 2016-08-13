@@ -12,22 +12,30 @@ class TableViewCell: UITableViewCell {
 
 	@IBOutlet weak var buttonChek: UIButton!
 	
-	@IBAction func pushChekAction(sender: AnyObject) {
-	}
-	
 	@IBOutlet weak var labelName: UILabel!
 	
 	@IBOutlet weak var labelSubItems: UILabel!
 	
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+	@IBAction func pushChekAction(sender: AnyObject) {
+	}
+	
+	//инициализируем
+	var toDoInCell: ToDoItem?
+	func initCell(toDo: ToDoItem) {
+		toDoInCell = toDo
+		labelName.text = toDoInCell?.name
+		labelSubItems.text = toDoInCell?.subItemstext
+	}
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+	override func awakeFromNib() {
+					super.awakeFromNib()
+					// Initialization code
+	}
 
-        // Configure the view for the selected state
-    }
+	override func setSelected(selected: Bool, animated: Bool) {
+					super.setSelected(selected, animated: animated)
+
+					// Configure the view for the selected state
+	}
 
 }

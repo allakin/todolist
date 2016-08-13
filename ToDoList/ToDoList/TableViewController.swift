@@ -127,17 +127,10 @@ class TableViewController: UITableViewController {
 
  // MARK: - cellForRowAtIndexPath
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TableViewCell
 		
 		let itemForCell = toDoItemCurrent?.subItems[indexPath.row]
-		cell.textLabel?.text = itemForCell!.name
-		
-		//отображение количества items в ячейке
-		if itemForCell!.subItems.count != 0 {
-			cell.detailTextLabel?.text = String(itemForCell!.subItems.count)+" subitems"
-		} else {
-			cell.detailTextLabel?.text = ""
-		}
+		cell.initCell(itemForCell!)
 		
 		return cell
 	}
