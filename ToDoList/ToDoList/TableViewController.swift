@@ -50,6 +50,7 @@ class TableViewController: UITableViewController {
 		//отображение в проваленном списке заголовок категории
 		navigationItem.title = toDoItemCurrent?.name
 	}
+	
 
 	override func didReceiveMemoryWarning() {
 					super.didReceiveMemoryWarning()
@@ -57,7 +58,6 @@ class TableViewController: UITableViewController {
 	}
 
 	// MARK: - Table view data source
-
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 					// #warning Incomplete implementation, return the number of sections
 					return 1
@@ -73,12 +73,19 @@ class TableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 		
 		let itemForCell = toDoItemCurrent?.subItems[indexPath.row]
-		cell.textLabel?.text = itemForCell?.name
+		cell.textLabel?.text = itemForCell!.name
+		
+		//отображение количества items в ячейке
+		if itemForCell!.subItems.count != 0 {
+			cell.detailTextLabel?.text = String(itemForCell!.subItems.count)+" subitems"
+		} else {
+			cell.detailTextLabel?.text = ""
+		}
+		
 		return cell
 	}
 	
 
-	
 	// Override to support conditional editing of the table view.
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		// Return false if you do not want the specified item to be editable.
