@@ -50,4 +50,9 @@ class ToDoItem: NSObject {
 		subItems.append(subItem)
 	}
 	
+	//функция удаления
+	func removeSubItem(index: Int) {
+		subItems.removeAtIndex(index)
+	}
+	
 }
