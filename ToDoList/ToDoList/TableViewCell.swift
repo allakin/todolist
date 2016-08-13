@@ -10,6 +10,15 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
+	@IBOutlet weak var buttonChek: UIButton!
+	
+	@IBAction func pushChekAction(sender: AnyObject) {
+	}
+	
+	@IBOutlet weak var labelName: UILabel!
+	
+	@IBOutlet weak var labelSubItems: UILabel!
+	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
