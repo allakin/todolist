@@ -43,7 +43,6 @@ class TableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 					super.viewDidLoad()
-		
 		if toDoItemCurrent == nil {
 			toDoItemCurrent = rootItem
 		}
@@ -89,6 +88,7 @@ class TableViewController: UITableViewController {
 		if editingStyle == .Delete {
 			//удаляем строку из ячейки
 			toDoItemCurrent!.removeSubItem(indexPath.row)
+			//сохраняем данные
 			saveData()
 			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 		} else if editingStyle == .Insert {
@@ -96,6 +96,18 @@ class TableViewController: UITableViewController {
 		}
 	}
 
+	//проваливаемся в ячейку для отображения доп инфы
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let subItem = toDoItemCurrent?.subItems[indexPath.row]
+		let tvc = storyboard?.instantiateViewControllerWithIdentifier("todoSID") as! TableViewController
+		//выбранный в данный момент subitem
+		tvc.toDoItemCurrent = subItem
+		
+		//помещаем в навигейшен контроллер
+		navigationController?.pushViewController(tvc, animated: true)
+		
+	}
+	
 	/*
 	// Override to support rearranging the table view.
 	override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
