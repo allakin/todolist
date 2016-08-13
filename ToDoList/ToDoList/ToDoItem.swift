@@ -21,6 +21,30 @@ class ToDoItem: NSObject {
 		self.subItems = []
 	}
 	
+	//разворачиваем из словаря ToDoItem
+	init(dictionary: NSDictionary) {
+		self.name = dictionary.objectForKey("name") as! String
+		self.isComplete = dictionary.objectForKey("isComplete") as! Bool
+		self.subItems = []
+		
+		let arraySubTodos = dictionary.objectForKey("subtodos") as! NSArray
+		
+		for subtodoDict in arraySubTodos{
+			self.subItems.append(ToDoItem(dictionary: subtodoDict as! NSDictionary))
+		}
+	}
+	
+	//получаем словарь
+	var dictionary: NSDictionary{
+		//позвоить сделать сколько угодно длинную вложенность
+		var arraySubToDos = NSArray()
+		for subitem in subItems{
+			arraySubToDos = arraySubToDos.arrayByAddingObject(subitem.dictionary)
+		}
+		
+		let dictionary = NSDictionary(objects: [name, isComplete, arraySubToDos], forKeys: ["name", "isComplete", "subtodos"])
+		return dictionary
+	}
 	
 	func addSubItem(subItem: ToDoItem){
 		subItems.append(subItem)

@@ -20,6 +20,8 @@ class TableViewController: UITableViewController {
 		
 		tableView.reloadData()
 		
+		saveData()
+		
 	}
 	
 	

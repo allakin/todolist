@@ -136,8 +136,8 @@
 		739E31B91D5AE430001B382A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				731FA44D1D5F1A9C00B2A0C3 /* ToDoItem.swift */,
 				731FA44F1D5F1BB300B2A0C3 /* Model.swift */,
+				731FA44D1D5F1A9C00B2A0C3 /* ToDoItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
