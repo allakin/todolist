@@ -14,13 +14,29 @@ class TableViewController: UITableViewController {
 	
 	@IBAction func pushAddAction(sender: AnyObject) {
 		
-		let newItem = ToDoItem(name: "NewItem"+String(toDoItemCurrent!.subItems.count))
+		let alert = UIAlertController(title: "Create new item", message: "", preferredStyle: .Alert)
 		
-		toDoItemCurrent?.addSubItem(newItem)
+		alert.addTextFieldWithConfigurationHandler { (textField) in
+			textField.placeholder = "ToDo item"
+		}
+		//по клику добавляем значение в файл
+		let alertActionCreate = UIAlertAction(title: "Create", style: .Default) { (alertAction) in
+			if alert.textFields![0].text == "" {
+				print("ошибка")
+			} else {
+				let newItem = ToDoItem(name: alert.textFields![0].text!)
+				self.toDoItemCurrent?.addSubItem(newItem)
+				self.tableView.reloadData()
+				saveData()
+			}
+		}
 		
-		tableView.reloadData()
+		let alertActionCancel = UIAlertAction(title: "Cancel", style: .Cancel) { (UIAlertAction) in
+		}
 		
-		saveData()
+		alert.addAction(alertActionCreate)
+		alert.addAction(alertActionCancel)
+		presentViewController(alert, animated: true, completion: nil)
 		
 	}
 	
