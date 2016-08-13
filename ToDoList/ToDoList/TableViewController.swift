@@ -56,6 +56,12 @@ class TableViewController: UITableViewController {
 					super.didReceiveMemoryWarning()
 					// Dispose of any resources that can be recreated.
 	}
+	
+	// обновления информации в ячейках
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.reloadData()
+	}
 
 	// MARK: - Table view data source
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
