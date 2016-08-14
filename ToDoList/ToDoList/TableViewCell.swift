@@ -17,6 +17,9 @@ class TableViewCell: UITableViewCell {
 	@IBOutlet weak var labelSubItems: UILabel!
 	
 	@IBAction func pushChekAction(sender: AnyObject) {
+		toDoInCell?.changeState()
+		setChekButton()
+		saveData()
 	}
 	
 	//инициализируем
@@ -25,6 +28,16 @@ class TableViewCell: UITableViewCell {
 		toDoInCell = toDo
 		labelName.text = toDoInCell?.name
 		labelSubItems.text = toDoInCell?.subItemstext
+		setChekButton()
+	}
+	
+	//условие для отображение картинок
+	func setChekButton() {
+		if toDoInCell!.isComplete {
+			buttonChek.setImage(UIImage(named: "selectTodo.png"), forState: .Normal)
+		} else {
+			buttonChek.setImage(UIImage(named: "selectTodoDefault.png"), forState: .Normal)
+		}
 	}
 
 	override func awakeFromNib() {

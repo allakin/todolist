@@ -20,6 +20,7 @@ class ToDoItem: NSObject {
 			return ""
 		}
 		
+		
 		//вычисляем сколько сабайтемов
 		var completedTodoCount: Int = 0
 		for todo in subItems {
@@ -31,10 +32,9 @@ class ToDoItem: NSObject {
 		if completedTodoCount == 0 {
 			return String(subItems.count) + " subitems"
 		} else {
-			return String(subItems.count) + " subitems /" + String(completedTodoCount) + "complete"
+			return String(subItems.count) + " subitems / " + String(completedTodoCount) + " complete"
 	 }
 		
-
 	}
 	
 	
@@ -76,6 +76,10 @@ class ToDoItem: NSObject {
 	//функция удаления
 	func removeSubItem(index: Int) {
 		subItems.removeAtIndex(index)
+	}
+	
+	func changeState() {
+		isComplete = !isComplete
 	}
 	
 }
