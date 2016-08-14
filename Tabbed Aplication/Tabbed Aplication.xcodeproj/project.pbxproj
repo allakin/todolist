@@ -15,7 +15,7 @@
 		733F4F301D6072A100256CCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733F4F2E1D6072A100256CCC /* LaunchScreen.storyboard */; };
 		733F4F3B1D6072A100256CCC /* Tabbed_AplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F4F3A1D6072A100256CCC /* Tabbed_AplicationTests.swift */; };
 		733F4F461D6072A100256CCC /* Tabbed_AplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F4F451D6072A100256CCC /* Tabbed_AplicationUITests.swift */; };
-		733F4F541D60739300256CCC /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F4F531D60739300256CCC /* TaskManager.swift */; };
+		733F4F561D60998400256CCC /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F4F551D60998400256CCC /* TaskManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		733F4F411D6072A100256CCC /* Tabbed AplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tabbed AplicationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		733F4F451D6072A100256CCC /* Tabbed_AplicationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbed_AplicationUITests.swift; sourceTree = "<group>"; };
 		733F4F471D6072A100256CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		733F4F531D60739300256CCC /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		733F4F551D60998400256CCC /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 				733F4F2C1D6072A100256CCC /* Assets.xcassets */,
 				733F4F2E1D6072A100256CCC /* LaunchScreen.storyboard */,
 				733F4F311D6072A100256CCC /* Info.plist */,
-				733F4F531D60739300256CCC /* TaskManager.swift */,
+				733F4F551D60998400256CCC /* TaskManager.swift */,
 			);
 			path = "Tabbed Aplication";
 			sourceTree = "<group>";
@@ -264,7 +264,7 @@
 			files = (
 				733F4F281D6072A100256CCC /* SecondViewController.swift in Sources */,
 				733F4F241D6072A100256CCC /* AppDelegate.swift in Sources */,
-				733F4F541D60739300256CCC /* TaskManager.swift in Sources */,
+				733F4F561D60998400256CCC /* TaskManager.swift in Sources */,
 				733F4F261D6072A100256CCC /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
